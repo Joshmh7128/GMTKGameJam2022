@@ -62,6 +62,15 @@ namespace Dice.Player
 
 		#endregion
 
+		#region Camera
+		[Header("Camera Tuning")]
+		[SerializeField] private Vector3 cameraOffset = new Vector3(0, 12, -8.25f);
+		[SerializeField, Range(0f, 1f)] private float cameraInputWeight = 0.5f;
+		[SerializeField, Range(5, 15)] private float cameraControllerWeightMultiplier = 10f;
+		[SerializeField, Range(1, 2)] private float cameraControllerWidthMultiplier = 1.5f;
+		[SerializeField, Range(0f, 0.5f)] private float cameraDeadZoneLeft = 0.15f, cameraDeadZoneRight = 0.15f, cameraDeadZoneTop = 0.15f, cameraDeadZoneBottom = 0.15f; 
+		#endregion
+		
 		#endregion
 
 		public static PlayerCharacterController instance;
@@ -144,6 +153,8 @@ namespace Dice.Player
 				}
 			}
 
+			HandleCameraMovement();
+
 			if (true && i_Attack) {
 				Attack();
 			}
@@ -185,6 +196,31 @@ namespace Dice.Player
 			{
 				characterVelocity = Vector3.ProjectOnPlane(characterVelocity, hit.normal);
 			}
+		}
+
+		private void HandleCameraMovement()
+		{
+			Vector3 targetPosition = transform.position;
+			if (input.currentControlScheme == "Gamepad")
+			{
+				targetPosition = transform.position + new Vector3(i_Look.x * cameraControllerWeightMultiplier * cameraControllerWidthMultiplier, 0, i_Look.y * cameraControllerWeightMultiplier);
+			}
+			else if (input.currentControlScheme == "Keyboard&Mouse")
+			{
+				Plane plane = new Plane(Vector3.up, transform.position);
+				Vector3 clampedMousePos = new Vector3(
+            		Mathf.Clamp(i_Look.x, Screen.width * cameraDeadZoneLeft, Screen.width * (1 - cameraDeadZoneRight)),
+            		Mathf.Clamp(i_Look.y, Screen.height * cameraDeadZoneBottom, Screen.height * (1 - cameraDeadZoneTop))
+            );
+				Ray ray = Camera.main.ScreenPointToRay(clampedMousePos);
+				float dist;
+				if (plane.Raycast(ray, out dist))
+				{
+					targetPosition = ray.GetPoint(dist);
+				}
+			}
+			targetPosition = Vector3.Lerp(transform.position, targetPosition, cameraInputWeight);
+			playerCamera.transform.position = Vector3.Slerp(playerCamera.transform.position, targetPosition + cameraOffset, 0.05f);
 		}
 
 		#region Weapon Methods
