@@ -10,7 +10,7 @@ public class DiceClass : MonoBehaviour
 
     [SerializeField] List<FaceClass> dieFaces = new List<FaceClass>(); // the list of all 6 of our faces
 
-    Vector3[] faceDirection = new Vector3[6] // directional rotations of each face of the die in euler angles
+    [SerializeField] Vector3[] faceDirection = new Vector3[6] // directional rotations of each face of the die in euler angles
     {
         new Vector3(0,0,0), // one
         new Vector3(0,90,0), // two
@@ -20,28 +20,44 @@ public class DiceClass : MonoBehaviour
         new Vector3(90,0,0) // six
     };
 
-    Vector3 randomRoll; // the random roll we lerp to before we lerp to our desired die face
-    Vector3 targetRot; // our target rotation that we are always moving towards
+    [SerializeField] Vector3 randomRoll; // the random roll we lerp to before we lerp to our desired die face
+    [SerializeField] Vector3 targetRot; // our target rotation that we are always moving towards
+    [SerializeField] Transform targetRotTransform; // our target rotation transform
 
     [SerializeField] float rollSlerpDelta;
 
     private void Update()
     {
+        // for testing
+        if (Input.GetKeyDown(KeyCode.Space)) 
+        {
+            StartCoroutine(StartRoll((int)Random.Range(0, 5))); 
+        } 
+
         // process our roll
         ProcessRoll();
     }
 
     // this rolls the die
-    public void StartRoll(int targetSide)
+    IEnumerator StartRoll(int targetSide)
     {
+        Debug.Log("StartRoll " + targetSide);
         // roll towards a high number
-        randomRoll = new Vector3(Random.Range(-900, 900), Random.Range(-900, 900));
+        randomRoll = new Vector3(Random.Range(-900, 900), Random.Range(-900, 900), Random.Range(-900, 900));
+        targetRot = randomRoll;
+        yield return new WaitForSeconds(0.2f);
         // then roll towards our target side
-        RollTime(0.5f, targetSide);
+        randomRoll = new Vector3(Random.Range(-900, 900), Random.Range(-900, 900), Random.Range(-900, 900));
+        targetRot = randomRoll;
+        yield return new WaitForSeconds(0.2f);
+        randomRoll = new Vector3(Random.Range(-900, 900), Random.Range(-900, 900), Random.Range(-900, 900));
+        targetRot = randomRoll;
+        StartCoroutine(RollTime(0.2f, targetSide));
     }
 
     IEnumerator RollTime(float rollTime, int targetSide)
     {
+        Debug.Log("Rolltime " + targetSide);
         // wait for a moment before setting our real rotation
         yield return new WaitForSeconds(rollTime);
         // then set the real rotation
@@ -50,8 +66,10 @@ public class DiceClass : MonoBehaviour
 
     public void ProcessRoll()
     {
-        // slerp towards our target rotation
-        transform.eulerAngles = Vector3.Slerp(transform.eulerAngles, targetRot, rollSlerpDelta * Time.deltaTime);
+        // set our target rot transform to the roll we want
+        targetRotTransform.localEulerAngles = targetRot;
 
+        // lerp our rotation to the target rot every frame
+        transform.localRotation = Quaternion.Lerp(transform.localRotation, targetRotTransform.localRotation, rollSlerpDelta * Time.deltaTime);
     }
 }
