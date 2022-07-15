@@ -14,4 +14,5 @@ public abstract class WeaponClass : MonoBehaviour
 	/// Amount of ammo or durability the weapon has.
 	/// </summary>
 	protected int uses;
+	public int Uses {get {return uses;} protected set {uses = value;}}
 }

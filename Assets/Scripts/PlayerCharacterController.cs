@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 namespace Dice.Player
 {
@@ -27,6 +28,7 @@ namespace Dice.Player
 
 		[SerializeField]
 		WeaponClass currentWeapon; 
+		[SerializeField] private Text ammoCounter;
 
 		#endregion
 
@@ -236,12 +238,14 @@ namespace Dice.Player
 
 			activeWeapon = Instantiate(weapon, pointerThing.transform);
 			_activeWeapon = activeWeapon.GetComponent<WeaponClass>();
+			ammoCounter.text = $"{_activeWeapon.Uses}";
 		}
 
 		private void Attack()
 		{
 			if (_activeWeapon) {
 				_activeWeapon.Attack();
+				ammoCounter.text = $"{_activeWeapon.Uses}";
 			}
 		}
 
