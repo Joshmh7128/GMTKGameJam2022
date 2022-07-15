@@ -126,7 +126,7 @@ PlayerSettings:
   vulkanNumSwapchainBuffers: 3
   vulkanEnableSetSRGBWrite: 0
   vulkanEnablePreTransform: 1
-  vulkanEnableLateAcquireNextImage: 0
+  vulkanEnableLateAcquireNextImage: 1
   vulkanEnableCommandBufferRecycling: 1
   m_SupportedAspectRatios:
     4:3: 1
@@ -713,7 +713,7 @@ PlayerSettings:
     m_VersionCode: 1
     m_VersionName: 
   apiCompatibilityLevel: 6
-  activeInputHandler: 1
+  activeInputHandler: 2
   cloudProjectId: 
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
