@@ -8,6 +8,7 @@ public class DiceClass : MonoBehaviour
     /// script will handle all the things on a die, player controller
     /// </summary>
 
+    public FaceClass activeFace; // our active face
     [SerializeField] List<FaceClass> dieFaces = new List<FaceClass>(); // the list of all 6 of our faces
 
     [SerializeField] Vector3[] faceDirection = new Vector3[6] // directional rotations of each face of the die in euler angles
@@ -62,6 +63,7 @@ public class DiceClass : MonoBehaviour
         yield return new WaitForSeconds(rollTime);
         // then set the real rotation
         targetRot = faceDirection[targetSide];
+        activeFace = dieFaces[targetSide];
     }
 
     public void ProcessRoll()
