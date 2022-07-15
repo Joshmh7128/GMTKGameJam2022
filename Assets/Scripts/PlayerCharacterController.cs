@@ -53,7 +53,7 @@ namespace Dice.Player
 				
 		// Current velocity of the player character.
 		Vector3 characterVelocity;
-		
+
 		#endregion
 
 		#region Lookin' Around
@@ -61,8 +61,10 @@ namespace Dice.Player
 		// DO STUFF HERE
 
 		#endregion
-		
+
 		#endregion
+
+		public static PlayerCharacterController instance;
 
 		#region Methods
 
@@ -72,6 +74,7 @@ namespace Dice.Player
 		Vector2 i_Look;
 		bool i_Jump;
 		bool i_Sprint;
+		bool i_Attack;
 
 		public void OnMove(InputAction.CallbackContext context)
 		{
@@ -85,15 +88,21 @@ namespace Dice.Player
 
 		public void OnAttack(InputAction.CallbackContext context)
 		{
-			if (context.started)
+			if (context.started && false)
 			{
 				Attack();
 			}
+			i_Attack = context.ReadValue<float>() > 0;
 		}
 
 		#endregion
 
 		#region Initiation Methods
+
+		private void Awake()
+		{
+			instance = this;
+		}
 
 		private void Start()
 		{
@@ -105,7 +114,12 @@ namespace Dice.Player
 
 			// Hide and lock our mouse. Standard stuff.
 			//Cursor.visible = false; Cursor.lockState = CursorLockMode.Locked;
+
+			//TESTO TESTO TESTO
+			SwitchWeapon(startingWeapon);
 		}
+
+		[SerializeField] GameObject startingWeapon;
 
 		#endregion
 
@@ -128,6 +142,10 @@ namespace Dice.Player
 				{
 					pointerThing.transform.LookAt(ray.GetPoint(dist));
 				}
+			}
+
+			if (true && i_Attack) {
+				Attack();
 			}
 		}
 
@@ -169,10 +187,29 @@ namespace Dice.Player
 			}
 		}
 
+		#region Weapon Methods
+
+		GameObject activeWeapon;
+		WeaponClass _activeWeapon;
+
+		public void SwitchWeapon(GameObject weapon)
+		{
+			if (activeWeapon) {
+				Destroy(activeWeapon);
+			}
+
+			activeWeapon = Instantiate(weapon, pointerThing.transform);
+			_activeWeapon = activeWeapon.GetComponent<WeaponClass>();
+		}
+
 		private void Attack()
 		{
-			// Do some shit here.
+			if (_activeWeapon) {
+				_activeWeapon.Attack();
+			}
 		}
+
+		#endregion
 
 		#region Miscellaneous Methods
 

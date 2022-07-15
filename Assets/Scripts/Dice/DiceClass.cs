@@ -30,18 +30,21 @@ public class DiceClass : MonoBehaviour
     private void Update()
     {
         // for testing
-        if (Input.GetKeyDown(KeyCode.Space)) 
+        /*if (Input.GetKeyDown(KeyCode.Space)) 
         {
             StartCoroutine(StartRoll((int)Random.Range(0, 5))); 
-        } 
+        }*/
 
         // process our roll
         ProcessRoll();
     }
 
+	bool rolling;
+
     // this rolls the die
     IEnumerator StartRoll(int targetSide)
     {
+		rolling = true;
         Debug.Log("StartRoll " + targetSide);
         // roll towards a high number
         randomRoll = new Vector3(Random.Range(-900, 900), Random.Range(-900, 900), Random.Range(-900, 900));
@@ -64,6 +67,8 @@ public class DiceClass : MonoBehaviour
         // then set the real rotation
         targetRot = faceDirection[targetSide];
         activeFace = dieFaces[targetSide];
+		Dice.Player.PlayerCharacterController.instance.SwitchWeapon(activeFace.weapon);
+		rolling = false;
     }
 
     public void ProcessRoll()
@@ -74,4 +79,23 @@ public class DiceClass : MonoBehaviour
         // lerp our rotation to the target rot every frame
         transform.localRotation = Quaternion.Lerp(transform.localRotation, targetRotTransform.localRotation, rollSlerpDelta * Time.deltaTime);
     }
+
+	public static DiceClass instance;
+
+	private void Awake()
+	{
+		instance = this;
+	}
+
+	private void Start()
+	{
+		RollTheDie();
+	}
+
+	public void RollTheDie()
+	{
+		if (!rolling) {
+			StartCoroutine(StartRoll(Random.Range(0, 5)));
+		}
+	}
 }

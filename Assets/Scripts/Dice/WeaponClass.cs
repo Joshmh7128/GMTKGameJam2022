@@ -4,6 +4,14 @@ using UnityEngine;
 
 public abstract class WeaponClass : MonoBehaviour
 {
-    // the main action of this class
+    /// <summary>
+	/// Main action of the weapon.
+	/// </summary>
     public abstract void Attack();
+
+	[SerializeField, Tooltip("Amount of ammo or durability the weapon has.")]
+	/// <summary>
+	/// Amount of ammo or durability the weapon has.
+	/// </summary>
+	protected int uses;
 }
