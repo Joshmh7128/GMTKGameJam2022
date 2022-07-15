@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class ActionClass : MonoBehaviour
+public abstract class WeaponClass : MonoBehaviour
 {
     // the main action of this class
-    public abstract void Action();
+    public abstract void Attack();
 }

@@ -25,6 +25,9 @@ namespace Dice.Player
 		[SerializeField]
 		PlayerInput input;
 
+		[SerializeField]
+		WeaponClass currentWeapon; 
+
 		#endregion
 
 		#region General
