@@ -14,7 +14,7 @@ public class BulletScript : MonoBehaviour
 	protected LayerMask hittableLayers = -1;
 
 	[Header("Movement"), Tooltip("Speed of the projectile."), SerializeField]
-	protected float speed = 20f;
+	protected float initialSpeed = 20f;
 
 	[Tooltip("Acceleration rate of the bullet."), SerializeField]
 	protected float acceleration = 0f;
@@ -25,14 +25,18 @@ public class BulletScript : MonoBehaviour
 	protected Vector3 velocity;
 
 	protected void OnEnable() {
-		Destroy(gameObject, maxLifeTime);
-		velocity = transform.forward * speed;
+		velocity = transform.forward * initialSpeed;
+		time = 0;
 	}
 
 	protected void Update() {
 		transform.position += velocity * Time.deltaTime;
 		time += Time.deltaTime;
 		Accelerate();
+
+		// "Destroy" our object after its lifespan.
+		if (time >= maxLifeTime)
+			ObjectPooler.instance.RequeueObject(gameObject);
 	}
 
 	virtual protected void Accelerate() {

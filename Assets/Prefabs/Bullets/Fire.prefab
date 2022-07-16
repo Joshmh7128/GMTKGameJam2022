@@ -114,6 +114,6 @@ MonoBehaviour:
   hittableLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  speed: 15
+  initialSpeed: 15
   acceleration: -20
   damage: 40
