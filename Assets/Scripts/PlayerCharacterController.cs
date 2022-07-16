@@ -55,6 +55,10 @@ namespace Dice.Player
 				
 		// Current velocity of the player character.
 		Vector3 characterVelocity;
+		float playerJumpVelocity, verticalVelocity, gravity; // our current jump momentum
+		[SerializeField] float jumpVelocity, gravityValue; // the force applied if/when we jump, and the gravity
+		bool landed; // have we landed?
+
 
 		#endregion
 
@@ -179,6 +183,32 @@ namespace Dice.Player
 				Vector3 targetVelocity = worldspaceMoveInput * maxSpeedOnGround * speedModifier;
 
 				//targetVelocity = GetDirectionReorientedOnSlope(targetVelocity.normalized, groundNormal) * targetVelocity.magnitude;
+				
+				// check to see if we are on the ground
+				RaycastHit groundedHit;
+				Physics.Raycast(transform.position, Vector3.down, out groundedHit, 1.5f, Physics.AllLayers, QueryTriggerInteraction.Ignore);
+				
+				// if we are in the air, apply gravity
+				if (groundedHit.transform == null)
+				{
+					playerJumpVelocity += gravityValue * Time.deltaTime;
+					landed = false;
+				}
+				else if (groundedHit.transform != null)
+				{
+					// jumping
+					if (Input.GetKeyDown(KeyCode.Space))
+					{
+						playerJumpVelocity = Mathf.Sqrt(jumpVelocity * -3.0f * gravity);
+					}
+					else if (!landed)
+					{
+						playerJumpVelocity = 0f;
+						landed = true;
+					}
+				}
+
+				targetVelocity.y = playerJumpVelocity;
 
 				// Smoothly interpolate between our current velocity and the target velocity based on acceleration speed.
 				characterVelocity = Vector3.Lerp(characterVelocity, targetVelocity, movementSharpnessOnGround * Time.deltaTime);
