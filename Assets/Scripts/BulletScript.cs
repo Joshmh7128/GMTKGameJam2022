@@ -19,12 +19,21 @@ public class BulletScript : MonoBehaviour
 	[Header("Damage"), Tooltip("Damage of the projectile."), SerializeField]
 	float damage = 40f;
 
+	[Header("FX"), Tooltip("FX for the object"), SerializeField]
+	GameObject particleFX;
+	[SerializeField] bool parentFX;
+
 	Vector3 velocity;
 
 	private void OnEnable()
 	{
 		Destroy(gameObject, maxLifeTime);
 		velocity = transform.forward * speed;
+		if (!parentFX)
+		{ Instantiate(particleFX, transform.position, transform.rotation); } // need to rewrite as a pooled spawn visual effect 
+
+		if (parentFX)
+		{ Instantiate(particleFX, transform); } // need to rewrite as a pooled spawn visual effect 
 	}
 
 	private void Update()
