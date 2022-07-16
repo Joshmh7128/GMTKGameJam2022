@@ -12,14 +12,14 @@ GameObject:
   - component: {fileID: 5862926803437786624}
   - component: {fileID: 5862926803437786625}
   - component: {fileID: 5862926803437786626}
-  - component: {fileID: 5862926803437786627}
+  - component: {fileID: 4243677497529881306}
   m_Layer: 0
-  m_Name: Fire
+  m_Name: Missile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5862926803437786639
 Transform:
   m_ObjectHideFlags: 0
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 5862926803437786628}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.008, z: 2.072}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -98,7 +98,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5862926803437786627
+--- !u!114 &4243677497529881306
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -107,13 +107,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 5862926803437786628}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8c204868fed7d5478df63610068d532, type: 3}
+  m_Script: {fileID: 11500000, guid: e24d0d9f9bfe7d541ad16fb1dc6efa93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxLifeTime: 1
+  maxLifeTime: 1.25
   hittableLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  speed: 15
-  acceleration: -20
+  speed: 1
+  acceleration: 100
   damage: 40

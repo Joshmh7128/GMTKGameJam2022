@@ -21,7 +21,7 @@ public class ProjectileWeapon : WeaponClass {
 			_coolDown = coolDown;
 		}
 
-		if (uses <= 0)
+		if (_coolDown <= 0 && uses <= 0)
 		{
 			DiceClass.instance.RollTheDie();
 		}

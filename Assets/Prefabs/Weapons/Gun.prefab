@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 148a91d0d518b494bb9b7ba52fd28ebb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uses: 20
+  uses: 12
   coolDown: 0.25
   projectilePrefab: {fileID: 5862926803437786628, guid: e0ed881ca7c5d364884ea1181efeda02, type: 3}
   bulletOrigin: {fileID: 6681507914165928408}
