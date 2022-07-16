@@ -5,14 +5,22 @@ using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
+    [Header("AI")]
     public NavMeshAgent agent;
     public GameObject target;
     Vector3 wanderTarget = Vector3.zero;
     Vector3 lastSeen;
+    public float moveSpeed = 3.5f;
     public float visDist = 10;
-    public float capDist = 2;
+    public float atkDist = 2;
     public bool cooledDown = true;
 
+    [Header("Shooting")]
+    public Transform firePoint;
+    public float fireRate = 1f;
+    public float pauseTimer = .5f;
+    public GameObject bulletPrefab;
+    public bool attacking;
 
 
 
@@ -37,16 +45,16 @@ public class EnemyAI : MonoBehaviour
         float toTarget = Vector3.Angle(this.transform.forward, this.transform.TransformVector(targetDir));
 
         //gets targets speed to predict where they are going
-       /* if (toTarget > 90 && relativeHeading < 20 || target.GetComponent<PlayerController>().moveSpeed < 0.01f)
+        if (toTarget > 90 && relativeHeading < 20 || target.GetComponent<TestMove>().moveSpeed < 0.01f)
         {
             //approch target, uses speed to determine where target is going
             Seek(target.transform.position);
             return;
-        }*/
+        }
 
         //go to object with objects speed in mind
-       // float lookAhead = targetDir.magnitude / (agent.speed + target.GetComponent<PlayerController>().moveSpeed);
-       // Seek(target.transform.position + target.transform.forward * lookAhead);
+        float lookAhead = targetDir.magnitude / (agent.speed + target.GetComponent<TestMove>().moveSpeed);
+        Seek(target.transform.position + target.transform.forward * lookAhead);
     }
 
     void Wander()
@@ -54,7 +62,7 @@ public class EnemyAI : MonoBehaviour
         //distance for waypoint, as well as randomness
         float wanderRadius = 10;
         float wanderDistance = 10;
-        float wanderJitter = .5f;
+        float wanderJitter = 1f;
 
         //makes waypoint random
         wanderTarget += new Vector3(Random.Range(-5.0f, 5.0f) * wanderJitter, 0, Random.Range(-5.0f, 5.0f) * wanderJitter);
@@ -90,21 +98,21 @@ public class EnemyAI : MonoBehaviour
             return true;
         return false;
     }
-
-    public void Attack()
+    public IEnumerator Attack()
     {
-       /* anim.SetBool("IsAttack", true);
+        agent.speed = 0;
+        GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        Bullet bullet = bulletGO.GetComponent<Bullet>();
 
-        yield return new WaitForSeconds(.5f);
+        if (bullet != null)
+            bullet.Seek(target.transform);
+        yield return new WaitForSeconds(pauseTimer);
 
-        anim.SetFloat("Speed", 0);
-        attackBox.SetActive(true);
-        yield return new WaitForSeconds(.5f);
-        attackBox.SetActive(false);
-        anim.SetBool("IsAttack", false);
-        anim.SetFloat("Speed", 1);
-        yield return new WaitForSeconds(5);
-        cooledDown = true;*/
+        agent.speed = moveSpeed;
+
+        yield return new WaitForSeconds(fireRate);
+
+        cooledDown = true;
     }
 
     // Update is called once per frame
@@ -125,12 +133,11 @@ public class EnemyAI : MonoBehaviour
         //if target is in rage, they are captured
         Vector3 direction = target.transform.position - this.transform.position;
 
-        if (direction.magnitude < capDist && cooledDown)
+        if (direction.magnitude < atkDist && cooledDown)
         {
-            Attack();
+            StartCoroutine(Attack());
             cooledDown = false;
         }
-
 
     }
 }
