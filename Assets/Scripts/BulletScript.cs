@@ -17,7 +17,13 @@ public class BulletScript : MonoBehaviour
 	float slowdown = 0f;
 
 	[Header("Damage"), Tooltip("Damage of the projectile."), SerializeField]
-	float damage = 40f;
+	float damage = 1f;
+	[SerializeField] bool appliesKnockback; // does this apply knockback?
+
+	[Header("FX"), Tooltip("FX for the object"), SerializeField]
+	GameObject particleFX;
+	[SerializeField] GameObject deathFX;
+	[SerializeField] bool parentFX;
 
 	Vector3 velocity;
 
@@ -25,6 +31,11 @@ public class BulletScript : MonoBehaviour
 	{
 		Destroy(gameObject, maxLifeTime);
 		velocity = transform.forward * speed;
+		if (!parentFX)
+		{ Instantiate(particleFX, transform.position, transform.rotation); } // need to rewrite as a pooled spawn visual effect 
+
+		if (parentFX)
+		{ Instantiate(particleFX, transform); } // need to rewrite as a pooled spawn visual effect 
 	}
 
 	private void Update()
@@ -32,4 +43,24 @@ public class BulletScript : MonoBehaviour
 		transform.position += velocity * Time.deltaTime;
 		velocity = velocity.normalized * (velocity.magnitude - slowdown * Time.deltaTime);
 	}
+
+	// on trigger enter
+    private void OnTriggerEnter(Collider other)
+    {
+		// dealing damage to enemies
+        if (other.transform.tag == "Enemy")
+        {
+			other.gameObject.GetComponent<EnemyClass>().TakeDamage((int)damage, appliesKnockback);
+        }
+
+		// things that happen when we hit anything
+		OnDeath();
+    }
+
+	private void OnDeath()
+    {
+		if (deathFX != null)
+		Instantiate(deathFX, transform.position, transform.rotation); // our death effect
+		Destroy(gameObject); // break this gameobject
+    }
 }
