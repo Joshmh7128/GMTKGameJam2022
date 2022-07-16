@@ -77,7 +77,7 @@ public class CameraScreenshake : MonoBehaviour
         if (_velocity <= 0)
         {
             targetPos = home;
-            transform.localPosition = Vector3.Lerp(transform.localPosition, transform.localPosition + targetPos, 0.5f * Time.deltaTime);
+            transform.localPosition = Vector3.Lerp(transform.localPosition, home, 0.5f * Time.deltaTime);
         }
     }
 
