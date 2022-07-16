@@ -21,6 +21,7 @@ public class BulletScript : MonoBehaviour
 
 	[Header("FX"), Tooltip("FX for the object"), SerializeField]
 	GameObject particleFX;
+	GameObject deathFX;
 	[SerializeField] bool parentFX;
 
 	Vector3 velocity;
@@ -41,4 +42,23 @@ public class BulletScript : MonoBehaviour
 		transform.position += velocity * Time.deltaTime;
 		velocity = velocity.normalized * (velocity.magnitude - slowdown * Time.deltaTime);
 	}
+
+	// on trigger enter
+    private void OnTriggerEnter(Collider other)
+    {
+		// dealing damage to enemies
+        if (other.transform.tag == "Enemy")
+        {
+			other.gameObject.GetComponent<EnemyClass>().TakeDamage(1, true);
+        }
+
+		// things that happen when we hit anything
+		OnDeath();
+    }
+
+	private void OnDeath()
+    {
+		Instantiate(deathFX, transform.position, transform.rotation); // our death effect
+		Destroy(gameObject); // break this gameobject
+    }
 }
