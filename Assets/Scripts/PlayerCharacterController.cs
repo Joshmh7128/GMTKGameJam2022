@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 namespace Dice.Player
 {
@@ -27,6 +28,7 @@ namespace Dice.Player
 
 		[SerializeField]
 		WeaponClass currentWeapon; 
+		[SerializeField] private Text ammoCounter;
 
 		#endregion
 
@@ -53,7 +55,7 @@ namespace Dice.Player
 				
 		// Current velocity of the player character.
 		Vector3 characterVelocity;
-		
+
 		#endregion
 
 		#region Lookin' Around
@@ -61,8 +63,19 @@ namespace Dice.Player
 		// DO STUFF HERE
 
 		#endregion
+
+		#region Camera
+		[Header("Camera Tuning")]
+		[SerializeField] private Vector3 cameraOffset = new Vector3(0, 12, -8.25f);
+		[SerializeField, Range(0f, 1f)] private float cameraInputWeight = 0.5f;
+		[SerializeField, Range(5, 15)] private float cameraControllerWeightMultiplier = 10f;
+		[SerializeField, Range(1, 2)] private float cameraControllerWidthMultiplier = 1.5f;
+		[SerializeField, Range(0f, 0.5f)] private float cameraDeadZoneLeft = 0.15f, cameraDeadZoneRight = 0.15f, cameraDeadZoneTop = 0.15f, cameraDeadZoneBottom = 0.15f; 
+		#endregion
 		
 		#endregion
+
+		public static PlayerCharacterController instance;
 
 		#region Methods
 
@@ -72,6 +85,7 @@ namespace Dice.Player
 		Vector2 i_Look;
 		bool i_Jump;
 		bool i_Sprint;
+		bool i_Attack;
 
 		public void OnMove(InputAction.CallbackContext context)
 		{
@@ -85,15 +99,21 @@ namespace Dice.Player
 
 		public void OnAttack(InputAction.CallbackContext context)
 		{
-			if (context.started)
+			if (context.started && false)
 			{
 				Attack();
 			}
+			i_Attack = context.ReadValue<float>() > 0;
 		}
 
 		#endregion
 
 		#region Initiation Methods
+
+		private void Awake()
+		{
+			instance = this;
+		}
 
 		private void Start()
 		{
@@ -105,7 +125,12 @@ namespace Dice.Player
 
 			// Hide and lock our mouse. Standard stuff.
 			//Cursor.visible = false; Cursor.lockState = CursorLockMode.Locked;
+
+			//TESTO TESTO TESTO
+			SwitchWeapon(startingWeapon);
 		}
+
+		[SerializeField] GameObject startingWeapon;
 
 		#endregion
 
@@ -128,6 +153,12 @@ namespace Dice.Player
 				{
 					pointerThing.transform.LookAt(ray.GetPoint(dist));
 				}
+			}
+
+			HandleCameraMovement();
+
+			if (true && i_Attack) {
+				Attack();
 			}
 		}
 
@@ -169,10 +200,56 @@ namespace Dice.Player
 			}
 		}
 
+		private void HandleCameraMovement()
+		{
+			Vector3 targetPosition = transform.position;
+			if (input.currentControlScheme == "Gamepad")
+			{
+				targetPosition = transform.position + new Vector3(i_Look.x * cameraControllerWeightMultiplier * cameraControllerWidthMultiplier, 0, i_Look.y * cameraControllerWeightMultiplier);
+			}
+			else if (input.currentControlScheme == "Keyboard&Mouse")
+			{
+				Plane plane = new Plane(Vector3.up, transform.position);
+				Vector3 clampedMousePos = new Vector3(
+            		Mathf.Clamp(i_Look.x, Screen.width * cameraDeadZoneLeft, Screen.width * (1 - cameraDeadZoneRight)),
+            		Mathf.Clamp(i_Look.y, Screen.height * cameraDeadZoneBottom, Screen.height * (1 - cameraDeadZoneTop))
+            );
+				Ray ray = Camera.main.ScreenPointToRay(clampedMousePos);
+				float dist;
+				if (plane.Raycast(ray, out dist))
+				{
+					targetPosition = ray.GetPoint(dist);
+				}
+			}
+			targetPosition = Vector3.Lerp(transform.position, targetPosition, cameraInputWeight);
+			playerCamera.transform.position = Vector3.Slerp(playerCamera.transform.position, targetPosition + cameraOffset, 0.05f);
+		}
+
+		#region Weapon Methods
+
+		GameObject activeWeapon;
+		WeaponClass _activeWeapon;
+
+		public void SwitchWeapon(GameObject weapon)
+		{
+			if (activeWeapon) {
+				Destroy(activeWeapon);
+			}
+
+			activeWeapon = Instantiate(weapon, pointerThing.transform);
+			_activeWeapon = activeWeapon.GetComponent<WeaponClass>();
+			ammoCounter.text = $"{_activeWeapon.Uses}";
+		}
+
 		private void Attack()
 		{
-			// Do some shit here.
+			if (_activeWeapon) {
+				_activeWeapon.Attack();
+				ammoCounter.text = $"{_activeWeapon.Uses}";
+			}
 		}
+
+		#endregion
 
 		#region Miscellaneous Methods
 

@@ -4,5 +4,6 @@ using UnityEngine;
 
 public class FaceClass : MonoBehaviour
 {
-    public WeaponClass weaponClass;
+	public GameObject weapon;
+    //public WeaponClass weaponClass;
 }
