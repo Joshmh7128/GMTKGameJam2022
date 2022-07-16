@@ -43,6 +43,7 @@ public class GenerationManager : MonoBehaviour
     {
         foreach (Transform slot in slots)
         {
+            if (slot.childCount > 0)
             // set this slot to active
             slot.GetChild(Random.Range(0, slot.childCount)).gameObject.SetActive(true);
         }
