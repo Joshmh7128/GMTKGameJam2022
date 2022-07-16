@@ -129,12 +129,7 @@ namespace Dice.Player
 
 			// Hide and lock our mouse. Standard stuff.
 			//Cursor.visible = false; Cursor.lockState = CursorLockMode.Locked;
-
-			//TESTO TESTO TESTO
-			SwitchWeapon(startingWeapon);
 		}
-
-		[SerializeField] GameObject startingWeapon;
 
 		#endregion
 
