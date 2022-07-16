@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5862926803437786625}
   - component: {fileID: 5862926803437786626}
   - component: {fileID: 5862926803437786627}
+  - component: {fileID: -8475362701097523467}
   m_Layer: 0
   m_Name: Fire
   m_TagString: Untagged
@@ -63,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: b6c7c1e5a5a0b8f408eaa540e09cf1a3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -117,3 +118,20 @@ MonoBehaviour:
   speed: 15
   slowdown: 15
   damage: 40
+--- !u!114 &-8475362701097523467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5862926803437786628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc49017e9b98a0e4ebdc167c85fcd773, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _intensity: 0.5
+  _velocity: 1.99
+  _velocityDelta: 0.1
+  _interval: 0.5
+  _length: 2

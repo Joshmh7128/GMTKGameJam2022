@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraScreenshake : MonoBehaviour
 {
-    Vector3 home, targetPos; // our home position and movement position
+    [SerializeField] Vector3 home, targetPos; // our home position and movement position
 
     [SerializeField] float _intensity, _velocity, _velocityDelta, _interval, _length; // all our current variables
 
@@ -21,6 +21,7 @@ public class CameraScreenshake : MonoBehaviour
         // process the shake
         ProcessShake();
 
+        /// an example screenshare
         // ScreenShake(2, 2, 0.01f, 0.03f, 0.1f);
     }
 
@@ -45,7 +46,6 @@ public class CameraScreenshake : MonoBehaviour
     {
         if (_length >= 0)
         {
-            yield return new WaitForSeconds(_interval);
             float xr = Random.Range(-_intensity, _intensity);
             float yr = Random.Range(-_intensity, _intensity);
             float zr = Random.Range(-_intensity, _intensity);
@@ -54,6 +54,7 @@ public class CameraScreenshake : MonoBehaviour
             // calculate length
             _length -= _interval;
             // loop
+            yield return new WaitForSeconds(_interval);
             StartCoroutine(MoveTarget());
         } else
         {
@@ -73,9 +74,10 @@ public class CameraScreenshake : MonoBehaviour
             _velocity -= _velocityDelta;
         } 
         
-        if (_length <= 0)
+        if (_velocity <= 0)
         {
-            transform.localPosition = home;
+            targetPos = home;
+            transform.localPosition = Vector3.Lerp(transform.localPosition, transform.localPosition + targetPos, 0.5f * Time.deltaTime);
         }
     }
 
