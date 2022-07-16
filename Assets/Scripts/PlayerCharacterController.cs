@@ -84,6 +84,8 @@ namespace Dice.Player
 		float maxHealth = 5f;
 		[Header("Hurt Cooldown"), Tooltip("How long between you can get hurt"), SerializeField]
 		float damageCooldownMax, damageCooldownCurrent;
+		[SerializeField] CanvasGroup hurtCanvas; // the canvas that makes the screen go red
+		[SerializeField] float hurtAlphaReductionRate; // how fast the screen stops being red after being hurt
 		#endregion
 
 		#endregion
@@ -313,12 +315,20 @@ namespace Dice.Player
 			return Vector3.Cross(slopeNormal, directionRight).normalized;
 		}
 
+		void ProcessUIElements()
+        {
+			// make sure our screne stops being red after we get hurt
+			if (hurtCanvas.alpha >= 0)
+			{ hurtCanvas.alpha -= hurtAlphaReductionRate;}
+		}
+
 		#endregion
 
 		#region Modifying Health
 		public void TakeDamage(int damage)
         {
 			currentHealth -= damage;
+			hurtCanvas.alpha = 1;
         }
 
 		public void AddHealth(int amount)
