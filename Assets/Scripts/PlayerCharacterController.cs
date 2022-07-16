@@ -14,8 +14,8 @@ namespace Dice.Player
 
 		#region References
 
-		[Header("References"), Tooltip("Main camera used by the player."), SerializeField]
-		Camera playerCamera;
+		[Header("References"), Tooltip("Main camera transform used by the player."), SerializeField]
+		Transform playerCamera; // hey rob I had to change this cus I want screenshare
 
 		// Character controller used to move the player.
 		CharacterController controller;
@@ -247,7 +247,7 @@ namespace Dice.Player
 				}
 			}
 			targetPosition = Vector3.Lerp(transform.position, targetPosition, cameraInputWeight);
-			playerCamera.transform.position = Vector3.Slerp(playerCamera.transform.position, targetPosition + cameraOffset, 0.05f);
+			playerCamera.position = Vector3.Slerp(playerCamera.position, targetPosition + cameraOffset, 0.05f);
 		}
 
 		#region Weapon Methods
