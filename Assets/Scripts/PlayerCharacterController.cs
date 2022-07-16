@@ -177,7 +177,14 @@ namespace Dice.Player
 			}
 		}
 
-		private void HandleCharacterMovement()
+        private void FixedUpdate()
+        {
+			ProcessUIElements();
+			// process our damge cooldown
+			ProcessDamageCooldown();
+		}
+
+        private void HandleCharacterMovement()
 		{
 			// Character movement handling.
 			{
@@ -322,14 +329,27 @@ namespace Dice.Player
 			{ hurtCanvas.alpha -= hurtAlphaReductionRate;}
 		}
 
+		void ProcessDamageCooldown()
+        {
+			if (damageCooldownCurrent > -1)
+            {
+				damageCooldownCurrent--;
+            }
+        }
+
 		#endregion
 
 		#region Modifying Health
 		public void TakeDamage(int damage)
         {
-			currentHealth -= damage;
-			hurtCanvas.alpha = 1;
-        }
+			if (damageCooldownCurrent <= 0)
+			{
+				currentHealth -= damage;
+				hurtCanvas.alpha += 0.6f;
+				CameraScreenshake.CameraInstance.ScreenShake(3, 3, 0.2f, 0.1f, 2);
+				damageCooldownCurrent = damageCooldownMax;
+			}
+		}
 
 		public void AddHealth(int amount)
         {
