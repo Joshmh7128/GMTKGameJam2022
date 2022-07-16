@@ -16,6 +16,8 @@ public class ObjectPooler : MonoBehaviour
 		if (!instance)
 		{
 			instance = this;
+			transform.SetParent(null);
+			transform.position = Vector3.zero;
 			DontDestroyOnLoad(gameObject);
 		}
 		else

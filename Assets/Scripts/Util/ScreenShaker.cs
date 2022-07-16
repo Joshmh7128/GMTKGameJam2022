@@ -15,9 +15,11 @@ public class ScreenShaker : MonoBehaviour
     [Header("Length"), Tooltip("How long the camera shakes for"), SerializeField]
     float _length;
 
-    // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
         CameraScreenshake.CameraInstance.ScreenShake(_intensity, _velocity, _velocityDelta, _interval, _length);
     }
+
+	// Some bozo here used the start method instead of the OnEnable method
+	// what a bozo amirite
 }
