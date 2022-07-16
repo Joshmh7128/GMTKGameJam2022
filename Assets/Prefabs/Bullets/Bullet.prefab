@@ -118,8 +118,10 @@ MonoBehaviour:
     m_Bits: 4294967295
   speed: 20
   slowdown: 0
-  damage: 40
+  damage: 1
+  appliesKnockback: 1
   particleFX: {fileID: 144206, guid: e1ad6d8c3ae04e045ace56dc5f3878c3, type: 3}
+  deathFX: {fileID: 132352, guid: 08297ae120dc31f4aafeeddb4dff7a8b, type: 3}
   parentFX: 1
 --- !u!114 &-3726681290074205525
 MonoBehaviour:

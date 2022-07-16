@@ -17,11 +17,12 @@ public class BulletScript : MonoBehaviour
 	float slowdown = 0f;
 
 	[Header("Damage"), Tooltip("Damage of the projectile."), SerializeField]
-	float damage = 40f;
+	float damage = 1f;
+	[SerializeField] bool appliesKnockback; // does this apply knockback?
 
 	[Header("FX"), Tooltip("FX for the object"), SerializeField]
 	GameObject particleFX;
-	GameObject deathFX;
+	[SerializeField] GameObject deathFX;
 	[SerializeField] bool parentFX;
 
 	Vector3 velocity;
@@ -49,7 +50,7 @@ public class BulletScript : MonoBehaviour
 		// dealing damage to enemies
         if (other.transform.tag == "Enemy")
         {
-			other.gameObject.GetComponent<EnemyClass>().TakeDamage(1, true);
+			other.gameObject.GetComponent<EnemyClass>().TakeDamage((int)damage, appliesKnockback);
         }
 
 		// things that happen when we hit anything
@@ -58,6 +59,7 @@ public class BulletScript : MonoBehaviour
 
 	private void OnDeath()
     {
+		if (deathFX != null)
 		Instantiate(deathFX, transform.position, transform.rotation); // our death effect
 		Destroy(gameObject); // break this gameobject
     }

@@ -34,6 +34,7 @@ public class ZombieEnemy : EnemyClass
         // take damage
         HP -= damage;
         // set knockBack
+        if (knockBack)
         knockBackForce = 10f;
         // check if we have died, and if we have, run the death function
         if (HP <= 0)
