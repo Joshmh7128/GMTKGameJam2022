@@ -51,7 +51,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5862926803437786628}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -118,6 +118,8 @@ MonoBehaviour:
   initialSpeed: 15
   acceleration: -20
   damage: 40
+  particleFX: {fileID: 134572, guid: fac3b0fd8386b2b40a95058054a57b1c, type: 3}
+  parentFX: 0
 --- !u!114 &-8475362701097523467
 MonoBehaviour:
   m_ObjectHideFlags: 0

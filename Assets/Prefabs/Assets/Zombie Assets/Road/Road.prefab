@@ -44,7 +44,6 @@ GameObject:
   - component: {fileID: 5936674927325668034}
   - component: {fileID: 5936674927325668035}
   - component: {fileID: 2549510201937431371}
-  - component: {fileID: 8442954928740600312}
   m_Layer: 0
   m_Name: Model
   m_TagString: Untagged
@@ -6302,17 +6301,3 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
---- !u!64 &8442954928740600312
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5936674927325668046}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
