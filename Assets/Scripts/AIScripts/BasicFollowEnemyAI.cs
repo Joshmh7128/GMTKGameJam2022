@@ -12,9 +12,7 @@ public class BasicFollowEnemyAI : MonoBehaviour
     public float visDist = 10;
     public float capDist = 2;
     public bool cooledDown = true;
-
-
-
+    [SerializeField] bool usesSight; // added by josh to control enemy behaviour
 
     // Start is called before the first frame update
     void Start()
@@ -80,7 +78,12 @@ public class BasicFollowEnemyAI : MonoBehaviour
             if (raycastInfo.transform.gameObject.tag == "Player")
                 return true;
         }
-        return false;
+        if (usesSight)
+        {
+            return false;
+        } 
+
+        return true;
     }
 
     bool TargetInRange()
