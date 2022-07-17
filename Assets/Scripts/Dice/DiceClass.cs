@@ -97,11 +97,12 @@ public class DiceClass : MonoBehaviour
         inventoryDisplayText.text = InventoryStringDisplay();
         InventoryManager.instance.faces = dieFaces;
 
-        // update the faces okay ?
-        int i = 0;
+        // update the faces
+        int j = 0;
         foreach (FaceClass face in dieFaces)
         {
-            face.UpdateDisplay(i); i++;
+            face.UpdateDisplay(j); 
+            j++;
         }
     }
 

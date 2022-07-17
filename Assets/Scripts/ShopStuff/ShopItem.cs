@@ -1,12 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShopItem : MonoBehaviour
 {
     // our face
     public FaceClass face;
     [SerializeField] bool canInteract;
+    [SerializeField] int cost; // how much does this item cost?
+    [SerializeField] Text costDisplay; // show how much we cost
+
+    private void Start()
+    {
+        costDisplay.text = "Cost: " + cost;
+    }
 
     private void Update()
     {
@@ -19,42 +27,50 @@ public class ShopItem : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.Alpha1))
             {
-                DiceClass.instance.SwapWeapon(0, face);
-                Destroy(gameObject);
+                BuyWeapon(1, cost);
             }
 
             if (Input.GetKey(KeyCode.Alpha2))
             {
-                DiceClass.instance.SwapWeapon(1, face);
-                Destroy(gameObject);
+
+                BuyWeapon(2, cost);
             }
 
             if (Input.GetKey(KeyCode.Alpha3))
             {
-                DiceClass.instance.SwapWeapon(2, face);
-                Destroy(gameObject);
+
+                BuyWeapon(3, cost);
             }
 
             if (Input.GetKey(KeyCode.Alpha4))
             {
-                DiceClass.instance.SwapWeapon(3, face);
-                Destroy(gameObject);
+
+                BuyWeapon(4, cost);
             }
 
             if (Input.GetKey(KeyCode.Alpha5))
             {
-                DiceClass.instance.SwapWeapon(4, face);
-                Destroy(gameObject);
+
+                BuyWeapon(5, cost);
             }
 
             if (Input.GetKey(KeyCode.Alpha6))
             {
-                DiceClass.instance.SwapWeapon(5, face);
-                Destroy(gameObject);
+
+                BuyWeapon(6, cost);
             }
         }
     }
 
+    void BuyWeapon(int slot, int cost)
+    {
+        if (Dice.Player.PlayerCharacterController.instance.currencyAmount > cost)
+        {
+            DiceClass.instance.SwapWeapon(slot, face);
+            Dice.Player.PlayerCharacterController.instance.currencyAmount -= cost;
+            Destroy(gameObject);
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {

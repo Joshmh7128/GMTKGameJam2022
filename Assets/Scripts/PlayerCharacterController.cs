@@ -122,9 +122,14 @@ namespace Dice.Player
 		[SerializeField] Slider healthBar; // our healthbar
 		#endregion
 
-		#endregion
+		#region Money
+		public int currencyAmount; // how much currency the player has
+		[SerializeField] Text currencyDisplayText;
+        #endregion
 
-		public static PlayerCharacterController instance;
+        #endregion
+
+        public static PlayerCharacterController instance;
 
 		#region Methods
 
@@ -462,6 +467,8 @@ namespace Dice.Player
 			healthText.text = "HP: " + currentHealth;
 			healthBar.value = currentHealth;
 
+			// money
+			currencyDisplayText.text = "Money: " + currencyAmount;
 		}
 
 		void ProcessDamageCooldown()
