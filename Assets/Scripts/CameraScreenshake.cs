@@ -28,7 +28,7 @@ public class CameraScreenshake : MonoBehaviour
     // trigger a new screenshake
     public void ScreenShake(float intensity, float velocity, float velocityDelta, float interval, float length)
     {
-        Debug.Log("shaking");
+        //Debug.Log("shaking");
         // intensity = how hard we shake
         _intensity = intensity;
         // velocity = how quickly we shake
@@ -50,7 +50,7 @@ public class CameraScreenshake : MonoBehaviour
             float yr = Random.Range(-_intensity, _intensity);
             float zr = Random.Range(-_intensity, _intensity);
             targetPos = new Vector3(home.x + xr, home.y + yr, home.y + zr);
-            Debug.Log(targetPos);
+            //Debug.Log(targetPos);
             // calculate length
             _length -= _interval;
             // loop

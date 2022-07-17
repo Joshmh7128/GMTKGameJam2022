@@ -17,7 +17,7 @@ public class BasicFollowEnemyAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        agent = this.GetComponent<NavMeshAgent>();
+        agent = GetComponent<NavMeshAgent>();
     }
 
     void Seek(Vector3 location)
@@ -25,26 +25,29 @@ public class BasicFollowEnemyAI : MonoBehaviour
         agent.SetDestination(location);
     }
 
-    void Persue()
+    void Pursue()
     {
         //get the direction of target
-        Vector3 targetDir = target.transform.position - this.transform.position;
+        Vector3 targetDir = target.transform.position - transform.position;
 
         //get angle guard should approach
-        float relativeHeading = Vector3.Angle(this.transform.forward, this.transform.TransformVector(target.transform.forward));
-        float toTarget = Vector3.Angle(this.transform.forward, this.transform.TransformVector(targetDir));
+        float relativeHeading = Vector3.Angle(transform.forward, transform.TransformVector(target.transform.forward));
+        float toTarget = Vector3.Angle(transform.forward, transform.TransformVector(targetDir));
 
-        //gets targets speed to predict where they are going
-       /* if (toTarget > 90 && relativeHeading < 20 || target.GetComponent<PlayerController>().moveSpeed < 0.01f)
-        {
-            //approch target, uses speed to determine where target is going
-            Seek(target.transform.position);
-            return;
-        }*/
+		{//gets targets speed to predict where they are going
+		 /* if (toTarget > 90 && relativeHeading < 20 || target.GetComponent<PlayerController>().moveSpeed < 0.01f)
+		  {
+			  //approch target, uses speed to determine where target is going
+			  Seek(target.transform.position);
+			  return;
+		  }*/
 
-        //go to object with objects speed in mind
-       // float lookAhead = targetDir.magnitude / (agent.speed + target.GetComponent<PlayerController>().moveSpeed);
-       // Seek(target.transform.position + target.transform.forward * lookAhead);
+			//go to object with objects speed in mind
+			// float lookAhead = targetDir.magnitude / (agent.speed + target.GetComponent<PlayerController>().moveSpeed);
+			// Seek(target.transform.position + target.transform.forward * lookAhead);
+		}
+
+		Seek(target.transform.position);
     }
 
     void Wander()
@@ -62,7 +65,7 @@ public class BasicFollowEnemyAI : MonoBehaviour
 
         //calculates position for next target area
         Vector3 targetLocal = wanderTarget + new Vector3(0, 0, wanderDistance);
-        Vector3 targetWorld = this.gameObject.transform.TransformVector(targetLocal);
+        Vector3 targetWorld = gameObject.transform.TransformVector(targetLocal);
 
         //goes to random area
         Seek(targetWorld);
@@ -72,8 +75,8 @@ public class BasicFollowEnemyAI : MonoBehaviour
     {
         //is there a line of sight between the target and guard, if so, can see
         RaycastHit raycastInfo;
-        Vector3 rayToTarget = target.transform.position - this.transform.position;
-        if (Physics.Raycast(this.transform.position, rayToTarget, out raycastInfo))
+        Vector3 rayToTarget = target.transform.position - transform.position;
+        if (Physics.Raycast(transform.position, rayToTarget, out raycastInfo))
         {
             if (raycastInfo.transform.gameObject.tag == "Player")
                 return true;
@@ -89,14 +92,14 @@ public class BasicFollowEnemyAI : MonoBehaviour
     bool TargetInRange()
     {
         //is target in seeing distance
-        if (Vector3.Distance(this.transform.position, target.transform.position) < visDist)
+        if (Vector3.Distance(transform.position, target.transform.position) < visDist)
             return true;
         return false;
     }
 
     public void Attack()
     {
-       /* anim.SetBool("IsAttack", true);
+		{/* anim.SetBool("IsAttack", true);
 
         yield return new WaitForSeconds(.5f);
 
@@ -107,7 +110,7 @@ public class BasicFollowEnemyAI : MonoBehaviour
         anim.SetBool("IsAttack", false);
         anim.SetFloat("Speed", 1);
         yield return new WaitForSeconds(5);
-        cooledDown = true;*/
+        cooledDown = true;*/}
     }
 
     // Update is called once per frame
@@ -120,20 +123,17 @@ public class BasicFollowEnemyAI : MonoBehaviour
         }
         else if (TargetInRange() && CanSeeTarget())
         {
-            //persue if can see target, make tab on where they were last seen
-            Persue();
-
+            // Pursue if can see target, make tab on where they were last seen
+            Pursue();
         }
 
         //if target is in rage, they are captured
-        Vector3 direction = target.transform.position - this.transform.position;
+        Vector3 direction = target.transform.position - transform.position;
 
         if (direction.magnitude < capDist && cooledDown)
         {
             Attack();
             cooledDown = false;
         }
-
-
     }
 }

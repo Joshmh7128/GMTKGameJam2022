@@ -116,8 +116,8 @@ MonoBehaviour:
   hittableLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  speed: 15
-  slowdown: 15
+  initialSpeed: 15
+  acceleration: -20
   damage: 40
   appliesKnockback: 0
   particleFX: {fileID: 134572, guid: fac3b0fd8386b2b40a95058054a57b1c, type: 3}
