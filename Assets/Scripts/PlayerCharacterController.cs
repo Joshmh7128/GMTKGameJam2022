@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 namespace Dice.Player
 {
@@ -493,6 +494,12 @@ namespace Dice.Player
 				if (currentHealth <= 0)
                 {
 					deadCanvas.alpha = 1;
+					maxSpeedOnGround = 0;
+	
+					if (Input.GetKeyDown(KeyCode.Space))
+                    {
+						SceneManager.LoadScene("MainMenu");
+                    }
                 }
 
 				damageCooldownCurrent = damageCooldownMax;

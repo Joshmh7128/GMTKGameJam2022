@@ -925,6 +925,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goal
       objectReference: {fileID: 0}
+    - target: {fileID: 8043439289287577318, guid: dbb21d00b88a99046812e001fb23f138, type: 3}
+      propertyPath: scene
+      value: CaptureTheFlag
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dbb21d00b88a99046812e001fb23f138, type: 3}
 --- !u!1 &2019279634

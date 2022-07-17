@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Working/ShopScene000.unity
     guid: 4242c5b2224211444abd89baa1541829
+  - enabled: 1
+    path: Assets/Scenes/Working/CaptureTheFlag.unity
+    guid: 2118b2a3d0428a341863fa1ce7bbe710
+  - enabled: 1
+    path: Assets/Scenes/Working/ShopScene002.unity
+    guid: 7ff37a3e9b92e2945be25358fd112956
   m_configObjects: {}
