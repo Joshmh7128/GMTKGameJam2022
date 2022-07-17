@@ -17,8 +17,8 @@ GameObject:
   - component: {fileID: -6207135076295811332}
   - component: {fileID: 5665102057946235270}
   m_Layer: 0
-  m_Name: Bullet
-  m_TagString: Bullet
+  m_Name: Rifle Bullet
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -169,9 +169,9 @@ MonoBehaviour:
   hittableLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  speed: 20
+  speed: 60
   slowdown: 0
-  damage: 1
+  damage: 3
   appliesKnockback: 1
   particleFX: {fileID: 144206, guid: e1ad6d8c3ae04e045ace56dc5f3878c3, type: 3}
   deathFX: {fileID: 132352, guid: 08297ae120dc31f4aafeeddb4dff7a8b, type: 3}
