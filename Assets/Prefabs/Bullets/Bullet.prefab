@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5862926803437786627}
   - component: {fileID: -3726681290074205525}
   - component: {fileID: -6207135076295811332}
+  - component: {fileID: 5665102057946235270}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -107,7 +108,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5862926803437786628}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f8c204868fed7d5478df63610068d532, type: 3}
   m_Name: 
@@ -116,13 +117,9 @@ MonoBehaviour:
   hittableLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  speed: 20
-  slowdown: 0
+  initialSpeed: 20
+  acceleration: 0
   damage: 1
-  appliesKnockback: 1
-  particleFX: {fileID: 144206, guid: e1ad6d8c3ae04e045ace56dc5f3878c3, type: 3}
-  deathFX: {fileID: 132352, guid: 08297ae120dc31f4aafeeddb4dff7a8b, type: 3}
-  parentFX: 1
 --- !u!114 &-3726681290074205525
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,3 +153,26 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &5665102057946235270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5862926803437786628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 405a1b0fd7c4f7e4da4e08d458318e60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxLifeTime: 5
+  hittableLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  speed: 20
+  slowdown: 0
+  damage: 1
+  appliesKnockback: 1
+  particleFX: {fileID: 144206, guid: e1ad6d8c3ae04e045ace56dc5f3878c3, type: 3}
+  deathFX: {fileID: 132352, guid: 08297ae120dc31f4aafeeddb4dff7a8b, type: 3}
+  parentFX: 1

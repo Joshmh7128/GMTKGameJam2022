@@ -18,6 +18,7 @@ public class BasicFollowEnemyAI : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        target = FindObjectOfType<Dice.Player.PlayerCharacterController>().gameObject;
     }
 
     void Seek(Vector3 location)

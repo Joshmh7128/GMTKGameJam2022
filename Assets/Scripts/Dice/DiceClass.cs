@@ -67,7 +67,7 @@ public class DiceClass : MonoBehaviour
         // then set the real rotation
         targetRot = faceDirection[targetSide];
         activeFace = dieFaces[targetSide];
-		Dice.Player.PlayerCharacterController.instance.SwitchWeapon(activeFace.weapon);
+		Dice.Player.PlayerCharacterController.instance.SwitchWeapon(activeFace.weapon); Debug.Log("setting player weapon to " + activeFace.weapon);
 		rolling = false;
     }
 

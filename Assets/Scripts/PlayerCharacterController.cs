@@ -204,7 +204,7 @@ namespace Dice.Player
 			bool wasGrounded = isGrounded;
 			// Check to see if we're solidly planted on the earth.
 			GroundCheck();
-			if (isGrounded && !wasGrounded) { Debug.Log("Gay"); }
+			if (isGrounded && !wasGrounded) { }
 			// Stuff that happens upon landing.
 			if (isGrounded && !wasGrounded)
 			{
@@ -301,8 +301,7 @@ namespace Dice.Player
 				groundNormal = Vector3.up;
 			}
 		}
-
-		private void HandleCharacterMovement()
+		
         private void FixedUpdate()
         {
 			ProcessUIElements();
