@@ -241,6 +241,17 @@ namespace Dice.Player
 			if (true && i_Attack) {
 				Attack();
 			}
+
+			if (currentHealth <= 0)
+			{
+
+				if (Input.GetKeyDown(KeyCode.Space))
+				{
+					Destroy(InventoryManager.instance.gameObject);
+
+					SceneManager.LoadScene("MainMenu");
+				}
+			}
 		}
 
 		private void LateUpdate()

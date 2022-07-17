@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5862926803437786624}
   - component: {fileID: 5862926803437786625}
   - component: {fileID: 5862926803437786626}
-  - component: {fileID: 4243677497529881306}
+  - component: {fileID: -7343572467474771925}
   m_Layer: 0
   m_Name: Missile
   m_TagString: Untagged
@@ -94,12 +94,12 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5862926803437786628}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
+  m_IsTrigger: 1
+  m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4243677497529881306
+--- !u!114 &-7343572467474771925
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -108,16 +108,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 5862926803437786628}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e24d0d9f9bfe7d541ad16fb1dc6efa93, type: 3}
+  m_Script: {fileID: 11500000, guid: 405a1b0fd7c4f7e4da4e08d458318e60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxLifeTime: 1.25
+  maxLifeTime: 5
   hittableLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  initialSpeed: 1
-  acceleration: 100
-  damage: 40
+  speed: 20
+  slowdown: 0
+  damage: 1
+  appliesKnockback: 1
+  particleFX: {fileID: 144206, guid: e1ad6d8c3ae04e045ace56dc5f3878c3, type: 3}
+  deathFX: {fileID: 180860, guid: 89fdb9fee1f1fe94cb02018221255e50, type: 3}
+  parentFX: 1
 --- !u!1001 &1747758574376551358
 PrefabInstance:
   m_ObjectHideFlags: 0
