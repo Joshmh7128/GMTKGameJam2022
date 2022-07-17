@@ -56,7 +56,7 @@ public class DiceClass : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         randomRoll = new Vector3(Random.Range(-900, 900), Random.Range(-900, 900), Random.Range(-900, 900));
         targetRot = randomRoll;
-        StartCoroutine(RollTime(0.2f, targetSide));
+        StartCoroutine(RollTime(0.5f, targetSide));
     }
 
     IEnumerator RollTime(float rollTime, int targetSide)

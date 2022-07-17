@@ -12,7 +12,7 @@ public class ProjectileWeapon : WeaponClass {
     public override void Attack() {
 		if (_coolDown <= 0 && uses > 0) {
 			// Fire projectile from player.
-			Instantiate(projectilePrefab, bulletOrigin.position, bulletOrigin.rotation).SetActive(true);
+			ObjectPooler.instance.SpawnFromPool(projectilePrefab, bulletOrigin.position, bulletOrigin.rotation);
 
 			// Play shooting animation from weapon.
 			// Do that.
@@ -21,7 +21,7 @@ public class ProjectileWeapon : WeaponClass {
 			_coolDown = coolDown;
 		}
 
-		if (uses <= 0)
+		if (_coolDown <= 0 && uses <= 0)
 		{
 			DiceClass.instance.RollTheDie();
 		}

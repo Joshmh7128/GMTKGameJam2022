@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1589114170069992673}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -82,9 +82,9 @@ CharacterController:
   m_Radius: 0.5
   m_SlopeLimit: 45
   m_StepOffset: 0.3
-  m_SkinWidth: 0.08
+  m_SkinWidth: 0.001
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &1589114170719165646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -102,8 +102,17 @@ MonoBehaviour:
   input: {fileID: 1589114170719165647}
   currentWeapon: {fileID: 0}
   ammoCounter: {fileID: 0}
+  groundCheckLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  groundCheckDistance: 0.05
   maxSpeedOnGround: 10
   movementSharpnessOnGround: 15
+  maxSpeedInAir: 10
+  accelerationSpeedInAir: 100
+  maxJumpHeight: 2
+  minJumpHeight: 1
+  timeToJumpApex: 1
   cameraOffset: {x: 0, y: 12, z: -8.25}
   cameraInputWeight: 0.5
   cameraControllerWeightMultiplier: 10
@@ -112,7 +121,6 @@ MonoBehaviour:
   cameraDeadZoneRight: 0.15
   cameraDeadZoneTop: 0.15
   cameraDeadZoneBottom: 0.15
-  startingWeapon: {fileID: 4518640908078653096, guid: 964148bed16914d4380e58353f1c8747, type: 3}
 --- !u!114 &1589114170719165647
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -257,7 +265,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1589114171562848921}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

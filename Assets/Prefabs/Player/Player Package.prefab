@@ -1582,6 +1582,7 @@ Transform:
   - {fileID: 8705167247072306388}
   - {fileID: 8705167246613311464}
   - {fileID: 5849537882919923607}
+  - {fileID: 6301945664646925645}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2113,6 +2114,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2237522509754793646}
     - target: {fileID: 1589114170719165646, guid: 7e8906da4eb47764dba53f833b86d7c5, type: 3}
+      propertyPath: timeToJumpApex
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1589114170719165646, guid: 7e8906da4eb47764dba53f833b86d7c5, type: 3}
       propertyPath: cameraInputWeight
       value: 0.25
       objectReference: {fileID: 0}
@@ -2126,6 +2131,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e8906da4eb47764dba53f833b86d7c5, type: 3}
+--- !u!114 &7981325864010100709 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1589114170719165646, guid: 7e8906da4eb47764dba53f833b86d7c5, type: 3}
+  m_PrefabInstance: {fileID: 8705167246360900395}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 144262fac402a284585a75355eb0119f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &7981325864010100711 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1589114170719165644, guid: 7e8906da4eb47764dba53f833b86d7c5, type: 3}
@@ -2138,6 +2154,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8705167246205463658}
     m_Modifications:
+    - target: {fileID: 3449582570194736487, guid: 202347a7b0fadef4cbff11d37491dd78, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7477015121114191298, guid: 202347a7b0fadef4cbff11d37491dd78, type: 3}
       propertyPath: m_Name
       value: Main Camera
@@ -2194,7 +2214,28 @@ PrefabInstance:
       propertyPath: m_TargetTexture
       value: 
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3449582570529260413, guid: 202347a7b0fadef4cbff11d37491dd78, type: 3}
+    - {fileID: 3449582571011030831, guid: 202347a7b0fadef4cbff11d37491dd78, type: 3}
+    - {fileID: 3449582570466139288, guid: 202347a7b0fadef4cbff11d37491dd78, type: 3}
+    - {fileID: 3449582571319987743, guid: 202347a7b0fadef4cbff11d37491dd78, type: 3}
+    - {fileID: 3449582569883732454, guid: 202347a7b0fadef4cbff11d37491dd78, type: 3}
+    - {fileID: 3449582570877621701, guid: 202347a7b0fadef4cbff11d37491dd78, type: 3}
+    - {fileID: 3449582569572047254, guid: 202347a7b0fadef4cbff11d37491dd78, type: 3}
+    - {fileID: 3449582571010996806, guid: 202347a7b0fadef4cbff11d37491dd78, type: 3}
+    - {fileID: 3449582571027449460, guid: 202347a7b0fadef4cbff11d37491dd78, type: 3}
+    - {fileID: 3449582570217142697, guid: 202347a7b0fadef4cbff11d37491dd78, type: 3}
+    - {fileID: 3449582570053725269, guid: 202347a7b0fadef4cbff11d37491dd78, type: 3}
+    - {fileID: 3449582571112302486, guid: 202347a7b0fadef4cbff11d37491dd78, type: 3}
+    - {fileID: 3449582570426076374, guid: 202347a7b0fadef4cbff11d37491dd78, type: 3}
+    - {fileID: 3449582570395119660, guid: 202347a7b0fadef4cbff11d37491dd78, type: 3}
+    - {fileID: 3449582570320217051, guid: 202347a7b0fadef4cbff11d37491dd78, type: 3}
+    - {fileID: 3449582570490693502, guid: 202347a7b0fadef4cbff11d37491dd78, type: 3}
+    - {fileID: 3449582571615070033, guid: 202347a7b0fadef4cbff11d37491dd78, type: 3}
+    - {fileID: 3449582569564214192, guid: 202347a7b0fadef4cbff11d37491dd78, type: 3}
+    - {fileID: 3449582571058465618, guid: 202347a7b0fadef4cbff11d37491dd78, type: 3}
+    - {fileID: 3449582570643061727, guid: 202347a7b0fadef4cbff11d37491dd78, type: 3}
+    - {fileID: 3449582570528073146, guid: 202347a7b0fadef4cbff11d37491dd78, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 202347a7b0fadef4cbff11d37491dd78, type: 3}
 --- !u!4 &2237522509754793646 stripped
 Transform:
