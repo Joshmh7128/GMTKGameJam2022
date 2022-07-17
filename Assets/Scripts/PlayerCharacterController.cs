@@ -84,6 +84,10 @@ namespace Dice.Player
 		float maxHealth = 5f;
 		[Header("Hurt Cooldown"), Tooltip("How long between you can get hurt"), SerializeField]
 		float damageCooldownMax, damageCooldownCurrent;
+		[SerializeField] CanvasGroup hurtCanvas, deadCanvas; // the canvas that makes the screen go red
+		[SerializeField] float hurtAlphaReductionRate; // how fast the screen stops being red after being hurt
+		[SerializeField] Text healthText; // the display for our health
+		[SerializeField] Slider healthBar; // our healthbar
 		#endregion
 
 		#endregion
@@ -175,7 +179,14 @@ namespace Dice.Player
 			}
 		}
 
-		private void HandleCharacterMovement()
+        private void FixedUpdate()
+        {
+			ProcessUIElements();
+			// process our damge cooldown
+			ProcessDamageCooldown();
+		}
+
+        private void HandleCharacterMovement()
 		{
 			// Character movement handling.
 			{
@@ -313,13 +324,45 @@ namespace Dice.Player
 			return Vector3.Cross(slopeNormal, directionRight).normalized;
 		}
 
+		void ProcessUIElements()
+        {
+			// make sure our screne stops being red after we get hurt
+			if (hurtCanvas.alpha >= 0)
+			{ hurtCanvas.alpha -= hurtAlphaReductionRate;}
+
+			// for our HP
+			healthText.text = "HP: " + currentHealth;
+			healthBar.value = currentHealth;
+
+		}
+
+		void ProcessDamageCooldown()
+        {
+			if (damageCooldownCurrent > -1)
+            {
+				damageCooldownCurrent--;
+            }
+        }
+
 		#endregion
 
 		#region Modifying Health
 		public void TakeDamage(int damage)
         {
-			currentHealth -= damage;
-        }
+			if (damageCooldownCurrent <= 0)
+			{
+				currentHealth -= damage;
+				hurtCanvas.alpha += 0.6f;
+				CameraScreenshake.CameraInstance.ScreenShake(3, 3, 0.2f, 0.1f, 2);
+
+				if (currentHealth <= 0)
+                {
+					deadCanvas.alpha = 1;
+                }
+
+				damageCooldownCurrent = damageCooldownMax;
+			}
+		}
 
 		public void AddHealth(int amount)
         {

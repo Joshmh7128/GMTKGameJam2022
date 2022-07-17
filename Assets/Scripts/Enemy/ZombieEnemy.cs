@@ -10,14 +10,6 @@ public class ZombieEnemy : EnemyClass
     [SerializeField] GameObject ragDoll;
     float knockBackForce;
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            TakeDamage(1, true);
-        }
-    }
-
     public override void TakeDamage(int damage)
     {        
         // take damage
