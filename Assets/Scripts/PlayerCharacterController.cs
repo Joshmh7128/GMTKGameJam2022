@@ -226,7 +226,9 @@ namespace Dice.Player
 				float dist;
 				if (plane.Raycast(ray, out dist))
 				{
-					pointerThing.transform.LookAt(ray.GetPoint(dist));
+					// josh wrote this rotation code so that the pointerThing doesnt look at the ground
+					Vector3 point = ray.GetPoint(dist);
+					pointerThing.transform.LookAt(new Vector3(point.x, transform.position.y+1f, point.z));
 				}
 			}
 
