@@ -19,7 +19,7 @@ public class MoneyHit : MonoBehaviour
             dollarParticles.SetActive(true);
             dollarParticles.transform.parent = null;
             Destroy(gameObject);
-            Dice.Player.PlayerCharacterController.instance.currencyAmount += 1;
+            Dice.Player.PlayerCharacterController.currencyAmount += 1;
         }
     }
 }

@@ -123,7 +123,7 @@ namespace Dice.Player
 		#endregion
 
 		#region Money
-		public int currencyAmount; // how much currency the player has
+		public static int currencyAmount; // how much currency the player has
 		[SerializeField] Text currencyDisplayText;
         #endregion
 

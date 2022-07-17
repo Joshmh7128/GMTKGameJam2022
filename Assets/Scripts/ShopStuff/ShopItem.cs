@@ -64,10 +64,10 @@ public class ShopItem : MonoBehaviour
 
     void BuyWeapon(int slot, int cost)
     {
-        if (Dice.Player.PlayerCharacterController.instance.currencyAmount > cost)
+        if (Dice.Player.PlayerCharacterController.currencyAmount > cost)
         {
-            DiceClass.instance.SwapWeapon(slot, face);
-            Dice.Player.PlayerCharacterController.instance.currencyAmount -= cost;
+            DiceClass.instance.SwapWeapon(slot-1, face);
+            Dice.Player.PlayerCharacterController.currencyAmount -= cost;
             Destroy(gameObject);
         }
     }
