@@ -11,9 +11,7 @@ public class Sudoku : EnemyAI
         yield return new WaitForSeconds(.5f);
 
         // anim.SetFloat("Speed", 0);
-        bulletPrefab.SetActive(true);
         // yield return new WaitForSeconds(.5f);
-        bulletPrefab.SetActive(false);
         //anim.SetBool("IsAttack", false);
         // anim.SetFloat("Speed", 1);
         agent.speed = moveSpeed;
