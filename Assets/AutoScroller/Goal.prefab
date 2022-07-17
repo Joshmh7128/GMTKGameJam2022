@@ -127,4 +127,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ec05276eda6d3646bb3b8ab050da7eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scene: Shop
+  scene: ShopScene
