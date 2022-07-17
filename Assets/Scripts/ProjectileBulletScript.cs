@@ -47,6 +47,12 @@ public class ProjectileBulletScript : MonoBehaviour
 	// on trigger enter
     private void OnTriggerEnter(Collider other)
     {
+		// Don't do anything if we're touching another bullet.
+		if (other.tag == "Bullet")
+		{
+			return;
+		}
+
 		// dealing damage to enemies
         if (other.transform.tag == "Enemy")
         {
