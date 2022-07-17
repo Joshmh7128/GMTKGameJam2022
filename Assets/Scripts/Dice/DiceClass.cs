@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DiceClass : MonoBehaviour
 {
@@ -9,7 +10,8 @@ public class DiceClass : MonoBehaviour
     /// </summary>
 
     public FaceClass activeFace; // our active face
-    [SerializeField] List<FaceClass> dieFaces = new List<FaceClass>(); // the list of all 6 of our faces
+    public List<FaceClass> dieFaces = new List<FaceClass>(); // the list of all 6 of our faces
+    public List<Transform> faceDisplayTransforms = new List<Transform>(); // all the positions of our die faces
 
     [SerializeField] Vector3[] faceDirection = new Vector3[6] // directional rotations of each face of the die in euler angles
     {
@@ -29,13 +31,6 @@ public class DiceClass : MonoBehaviour
 
     private void Update()
     {
-        // for testing
-        /*if (Input.GetKeyDown(KeyCode.Space)) 
-        {
-            StartCoroutine(StartRoll((int)Random.Range(0, 5))); 
-        }*/
-
-        // process our roll
         ProcessRoll();
     }
 
@@ -69,6 +64,8 @@ public class DiceClass : MonoBehaviour
         activeFace = dieFaces[targetSide];
 		Dice.Player.PlayerCharacterController.instance.SwitchWeapon(activeFace.weapon); Debug.Log("setting player weapon to " + activeFace.weapon);
 		rolling = false;
+
+        UpdateInventory();
     }
 
     public void ProcessRoll()
@@ -89,8 +86,24 @@ public class DiceClass : MonoBehaviour
 
 	private void Start()
 	{
-		RollTheDie();
-	}
+        // get our faces on start, after the Awake() from our inventory
+        dieFaces = InventoryManager.instance.faces;
+        RollTheDie();
+    }
+
+    // whenever we update the weapons we have, update our inventory
+    public void UpdateInventory()
+    {
+        inventoryDisplayText.text = InventoryStringDisplay();
+        InventoryManager.instance.faces = dieFaces;
+
+        // update the faces okay ?
+        int i = 0;
+        foreach (FaceClass face in dieFaces)
+        {
+            face.UpdateDisplay(i); i++;
+        }
+    }
 
 	public void RollTheDie()
 	{
@@ -98,4 +111,29 @@ public class DiceClass : MonoBehaviour
 			StartCoroutine(StartRoll(Random.Range(0, 5)));
 		}
 	}
+
+    [SerializeField] Text inventoryDisplayText;
+
+    // build a string for testing purposes
+    public string InventoryStringDisplay()
+    {
+        // clean the string
+        string inventory = "";
+        // run a loop and add to the string
+        int i = 0;
+        foreach (var face in dieFaces)
+        {
+            inventory += i + " " + face.name + " | "; i++;
+        }
+
+        return inventory;
+    }
+
+    // put a weapon in our inventory
+    public void SwapWeapon(int diePosition, FaceClass faceClass)
+    {
+        dieFaces[diePosition] = faceClass;
+        UpdateInventory();
+    }
+
 }

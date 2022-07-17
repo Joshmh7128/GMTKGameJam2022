@@ -5,5 +5,12 @@ using UnityEngine;
 public class FaceClass : MonoBehaviour
 {
 	public GameObject weapon;
-    //public WeaponClass weaponClass;
+    GameObject displayWeapon;
+    public int diePosition; // 1 through 6
+
+    // on enable spawn our weapon to the face spot
+    public void UpdateDisplay(int position)
+    {
+        displayWeapon = Instantiate(weapon.GetComponent<WeaponClass>().weaponModel, DiceClass.instance.faceDisplayTransforms[position]);
+    }
 }

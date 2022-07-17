@@ -122,6 +122,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ae77a153b99ff046ae91c4613e59bc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  home: {x: 0, y: 0, z: 0}
+  targetPos: {x: 0, y: 0, z: 0}
+  _intensity: 0
+  _velocity: 0
+  _velocityDelta: 0
+  _interval: 0
+  _length: 0
 --- !u!1 &7477015121114191298
 GameObject:
   m_ObjectHideFlags: 0
@@ -162,10 +169,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7477015121114191311}
     m_Modifications:
+    - target: {fileID: 5196257528905865170, guid: 298223a8147e4614b9556c1f8572f169, type: 3}
+      propertyPath: weapon
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5196257528911336189, guid: 298223a8147e4614b9556c1f8572f169, type: 3}
+      propertyPath: weapon
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5196257529304334012, guid: 298223a8147e4614b9556c1f8572f169, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 32dea00883734de45af606f618afa9ec, type: 2}
+    - target: {fileID: 5196257529316784674, guid: 298223a8147e4614b9556c1f8572f169, type: 3}
+      propertyPath: weapon
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5196257529829711954, guid: 298223a8147e4614b9556c1f8572f169, type: 3}
+      propertyPath: weapon
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5196257530067217146, guid: 298223a8147e4614b9556c1f8572f169, type: 3}
+      propertyPath: weapon
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5196257530115938966, guid: 298223a8147e4614b9556c1f8572f169, type: 3}
+      propertyPath: weapon
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5196257530321696723, guid: 298223a8147e4614b9556c1f8572f169, type: 3}
       propertyPath: m_Name
       value: Rotational Parent

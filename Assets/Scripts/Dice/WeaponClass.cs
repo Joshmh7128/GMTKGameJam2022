@@ -15,4 +15,9 @@ public abstract class WeaponClass : MonoBehaviour
 	/// </summary>
 	protected int uses;
 	public int Uses {get {return uses;} protected set {uses = value;}}
+
+	/// <summary>
+	/// the model of our weapon to be instantiated on other places
+	/// </summary>
+	public GameObject weaponModel; 
 }
