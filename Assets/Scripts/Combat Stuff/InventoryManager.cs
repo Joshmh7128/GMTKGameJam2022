@@ -11,6 +11,11 @@ public class InventoryManager : MonoBehaviour
 
     private void Awake()
     {
+        if (instance != null)
+        {
+            Destroy(gameObject);
+        }
+
         // set up our instance so that other classes can easily find us
         instance = this;
         // make sure we keep this alive
