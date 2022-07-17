@@ -8,6 +8,7 @@ public class ProjectileWeapon : WeaponClass {
 	private float _coolDown;
 	[SerializeField] GameObject projectilePrefab;
 	[SerializeField] Transform bulletOrigin;
+	public GameObject weaponModel; // the model of our weapon to be instantiated on other places
 
     public override void Attack() {
 		if (_coolDown <= 0 && uses > 0) {
