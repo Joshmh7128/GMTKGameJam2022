@@ -2502,6 +2502,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3329801405537772394}
     - target: {fileID: 1589114170719165646, guid: 7e8906da4eb47764dba53f833b86d7c5, type: 3}
+      propertyPath: deadCanvas
+      value: 
+      objectReference: {fileID: 2809354962859288853}
+    - target: {fileID: 1589114170719165646, guid: 7e8906da4eb47764dba53f833b86d7c5, type: 3}
       propertyPath: healthText
       value: 
       objectReference: {fileID: 1785306039281404701}
@@ -2539,15 +2543,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1589114170719165647, guid: 7e8906da4eb47764dba53f833b86d7c5, type: 3}
       propertyPath: m_ActionEvents.Array.size
-      value: 14
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1589114170719165647, guid: 7e8906da4eb47764dba53f833b86d7c5, type: 3}
       propertyPath: m_ActionEvents.Array.data[13].m_ActionId
       value: b81a8014-f673-4083-8b49-eb0c7ec52df6
       objectReference: {fileID: 0}
     - target: {fileID: 1589114170719165647, guid: 7e8906da4eb47764dba53f833b86d7c5, type: 3}
+      propertyPath: m_ActionEvents.Array.data[14].m_ActionId
+      value: 19c9992f-c952-4dfb-8202-54013c976838
+      objectReference: {fileID: 0}
+    - target: {fileID: 1589114170719165647, guid: 7e8906da4eb47764dba53f833b86d7c5, type: 3}
+      propertyPath: m_ActionEvents.Array.data[15].m_ActionId
+      value: af89ba34-d216-4978-a31d-e1771800d1f4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1589114170719165647, guid: 7e8906da4eb47764dba53f833b86d7c5, type: 3}
+      propertyPath: m_ActionEvents.Array.data[16].m_ActionId
+      value: bf612dca-bb20-46fc-a65e-75a6cacbad32
+      objectReference: {fileID: 0}
+    - target: {fileID: 1589114170719165647, guid: 7e8906da4eb47764dba53f833b86d7c5, type: 3}
+      propertyPath: m_ActionEvents.Array.data[17].m_ActionId
+      value: bd138916-ad98-4356-8385-ed3fb23788b3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1589114170719165647, guid: 7e8906da4eb47764dba53f833b86d7c5, type: 3}
+      propertyPath: m_ActionEvents.Array.data[18].m_ActionId
+      value: 011c7fd1-2f55-4b24-9dfd-81939da35ac0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1589114170719165647, guid: 7e8906da4eb47764dba53f833b86d7c5, type: 3}
+      propertyPath: m_ActionEvents.Array.data[19].m_ActionId
+      value: e3dae65a-40fe-40ac-bfb4-1c053698c993
+      objectReference: {fileID: 0}
+    - target: {fileID: 1589114170719165647, guid: 7e8906da4eb47764dba53f833b86d7c5, type: 3}
       propertyPath: m_ActionEvents.Array.data[13].m_ActionName
       value: Player/Jump[/Keyboard/space]
+      objectReference: {fileID: 0}
+    - target: {fileID: 1589114170719165647, guid: 7e8906da4eb47764dba53f833b86d7c5, type: 3}
+      propertyPath: m_ActionEvents.Array.data[14].m_ActionName
+      value: Player/1 Button[/Keyboard/1]
+      objectReference: {fileID: 0}
+    - target: {fileID: 1589114170719165647, guid: 7e8906da4eb47764dba53f833b86d7c5, type: 3}
+      propertyPath: m_ActionEvents.Array.data[15].m_ActionName
+      value: Player/2 Button[/Keyboard/2]
+      objectReference: {fileID: 0}
+    - target: {fileID: 1589114170719165647, guid: 7e8906da4eb47764dba53f833b86d7c5, type: 3}
+      propertyPath: m_ActionEvents.Array.data[16].m_ActionName
+      value: Player/3 Button[/Keyboard/3]
+      objectReference: {fileID: 0}
+    - target: {fileID: 1589114170719165647, guid: 7e8906da4eb47764dba53f833b86d7c5, type: 3}
+      propertyPath: m_ActionEvents.Array.data[17].m_ActionName
+      value: Player/4 Button[/Keyboard/4]
+      objectReference: {fileID: 0}
+    - target: {fileID: 1589114170719165647, guid: 7e8906da4eb47764dba53f833b86d7c5, type: 3}
+      propertyPath: m_ActionEvents.Array.data[18].m_ActionName
+      value: Player/5 Button[/Keyboard/5]
+      objectReference: {fileID: 0}
+    - target: {fileID: 1589114170719165647, guid: 7e8906da4eb47764dba53f833b86d7c5, type: 3}
+      propertyPath: m_ActionEvents.Array.data[19].m_ActionName
+      value: Player/6 Button[/Keyboard/6]
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e8906da4eb47764dba53f833b86d7c5, type: 3}
