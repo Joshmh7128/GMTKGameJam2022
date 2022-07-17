@@ -11,7 +11,6 @@ public class FaceClass : MonoBehaviour
     // on enable spawn our weapon to the face spot
     public void UpdateDisplay(int position)
     {
-        Destroy(displayWeapon);
         displayWeapon = Instantiate(weapon.GetComponent<WeaponClass>().weaponModel, DiceClass.instance.faceDisplayTransforms[position]);
     }
 }

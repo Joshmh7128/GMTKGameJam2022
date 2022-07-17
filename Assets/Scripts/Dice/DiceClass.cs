@@ -98,9 +98,10 @@ public class DiceClass : MonoBehaviour
         InventoryManager.instance.faces = dieFaces;
 
         // update the faces okay ?
+        int i = 0;
         foreach (FaceClass face in dieFaces)
         {
-            face.UpdateDisplay(dieFaces.IndexOf(face));
+            face.UpdateDisplay(i); i++;
         }
     }
 
@@ -119,12 +120,20 @@ public class DiceClass : MonoBehaviour
         // clean the string
         string inventory = "";
         // run a loop and add to the string
+        int i = 0;
         foreach (var face in dieFaces)
         {
-            inventory += dieFaces.IndexOf(face) + " " + face.name + " | ";
+            inventory += i + " " + face.name + " | "; i++;
         }
 
         return inventory;
+    }
+
+    // put a weapon in our inventory
+    public void SwapWeapon(int diePosition, FaceClass faceClass)
+    {
+        dieFaces[diePosition] = faceClass;
+        UpdateInventory();
     }
 
 }

@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 1589114170719165647}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -121,6 +121,15 @@ MonoBehaviour:
   cameraDeadZoneRight: 0.15
   cameraDeadZoneTop: 0.15
   cameraDeadZoneBottom: 0.15
+  currentHealth: 5
+  maxHealth: 5
+  damageCooldownMax: 0
+  damageCooldownCurrent: 0
+  hurtCanvas: {fileID: 0}
+  deadCanvas: {fileID: 0}
+  hurtAlphaReductionRate: 0
+  healthText: {fileID: 0}
+  healthBar: {fileID: 0}
 --- !u!114 &1589114170719165647
 MonoBehaviour:
   m_ObjectHideFlags: 0
