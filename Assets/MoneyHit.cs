@@ -6,14 +6,20 @@ public class MoneyHit : MonoBehaviour
 {
     public GameObject dollarParticles;
 
-    public void Start(){
+    public void Start()
+    {
         dollarParticles.SetActive(false);
     }
 
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider other)
     {
-        Debug.Log("HitMoney");
-        dollarParticles.SetActive(true);
-
+        if (other.gameObject.tag == "Player")
+        {
+            Debug.Log("HitMoney");
+            dollarParticles.SetActive(true);
+            dollarParticles.transform.parent = null;
+            Destroy(gameObject);
+            Dice.Player.PlayerCharacterController.instance.currencyAmount += 1;
+        }
     }
 }
