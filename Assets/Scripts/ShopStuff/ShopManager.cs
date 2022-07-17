@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class ShopManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public List<GameObject> shopItemGameObjects; // our list of shop items
+    [SerializeField] List<Transform> shopSpots; // our list of shop spots
+
+    private void Start()
     {
-        
+        ChooseItems();
     }
 
-    // Update is called once per frame
-    void Update()
+    void ChooseItems()
     {
-        
+        foreach (Transform shopSpot in shopSpots)
+        {
+            Instantiate(shopItemGameObjects[Random.Range(0, shopItemGameObjects.Count)], shopSpot);
+        }
     }
 }
