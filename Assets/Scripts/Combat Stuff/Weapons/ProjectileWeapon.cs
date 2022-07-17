@@ -5,9 +5,9 @@ using UnityEngine;
 public class ProjectileWeapon : WeaponClass {
 
 	public float coolDown;
-	private float _coolDown;
-	[SerializeField] GameObject projectilePrefab;
-	[SerializeField] Transform bulletOrigin;
+	protected float _coolDown;
+	[SerializeField] protected GameObject projectilePrefab;
+	[SerializeField] protected Transform bulletOrigin;
 
     public override void Attack() {
 		if (_coolDown <= 0 && uses > 0) {
@@ -27,7 +27,7 @@ public class ProjectileWeapon : WeaponClass {
 		}
     }
 
-	private void Update() {
+	protected void Update() {
 		if (_coolDown > 0) {
 			_coolDown -= Time.deltaTime;
 		}
