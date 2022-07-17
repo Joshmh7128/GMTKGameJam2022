@@ -111,7 +111,7 @@ namespace Dice.Player
 
 		#region Health
 		[Header("Health"), Tooltip("How much HP the player has and currently has"), SerializeField]
-		float currentHealth = 5f;
+		public float currentHealth = 5f;
 		[SerializeField]
 		float maxHealth = 5f;
 		[Header("Hurt Cooldown"), Tooltip("How long between you can get hurt"), SerializeField]
