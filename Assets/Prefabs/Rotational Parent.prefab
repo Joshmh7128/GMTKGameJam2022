@@ -628,13 +628,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activeFace: {fileID: 0}
-  dieFaces:
-  - {fileID: 5196257529829711954}
-  - {fileID: 5196257530067217146}
-  - {fileID: 5196257529316784674}
-  - {fileID: 5196257528905865170}
-  - {fileID: 5196257530115938966}
-  - {fileID: 5196257528911336189}
+  dieFaces: []
   faceDirection:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 90, z: 0}
@@ -646,6 +640,7 @@ MonoBehaviour:
   targetRot: {x: 0, y: 0, z: 0}
   targetRotTransform: {fileID: 5196257530320821499}
   rollSlerpDelta: 6
+  inventoryDisplayText: {fileID: 0}
 --- !u!1 &5196257529316784672
 GameObject:
   m_ObjectHideFlags: 0

@@ -131,7 +131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uses: 12
   weaponModel: {fileID: 6462588958409364028}
-  coolDown: 0.25
+  coolDown: 0.5
   projectilePrefab: {fileID: 5862926803437786628, guid: e0ed881ca7c5d364884ea1181efeda02, type: 3}
   bulletOrigin: {fileID: 6681507914165928408}
 --- !u!1001 &4031006200842195431
