@@ -13,6 +13,7 @@ public class ShopItem : MonoBehaviour
 
     private void Start()
     {
+        if (costDisplay != null)
         costDisplay.text = "Cost: " + cost;
     }
 

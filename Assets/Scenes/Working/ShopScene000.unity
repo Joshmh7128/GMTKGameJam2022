@@ -221,6 +221,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &377610576 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7225282005725733796, guid: d8d39ea4144977b4fb6c6d179af03ae5, type: 3}
+  m_PrefabInstance: {fileID: 1476650255}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &778767631 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6273961160287808068, guid: d8d39ea4144977b4fb6c6d179af03ae5, type: 3}
@@ -655,6 +660,10 @@ PrefabInstance:
       propertyPath: m_MaxValue
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 3649454359402527198, guid: d8d39ea4144977b4fb6c6d179af03ae5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.184
+      objectReference: {fileID: 0}
     - target: {fileID: 4115597193991893466, guid: d8d39ea4144977b4fb6c6d179af03ae5, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
@@ -699,6 +708,10 @@ PrefabInstance:
       propertyPath: faceDisplayTransforms.Array.data[5]
       value: 
       objectReference: {fileID: 919886089}
+    - target: {fileID: 7666195491593533934, guid: d8d39ea4144977b4fb6c6d179af03ae5, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 377610576}
     - target: {fileID: 7731614565474793439, guid: d8d39ea4144977b4fb6c6d179af03ae5, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -4.638916

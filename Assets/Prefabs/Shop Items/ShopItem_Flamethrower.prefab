@@ -49,7 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   face: {fileID: 495300537920053206, guid: 105d08ef64474a945b7c05acf72f2167, type: 3}
   canInteract: 0
-  cost: 10
+  cost: 2
   costDisplay: {fileID: 0}
 --- !u!135 &4382980160377363625
 SphereCollider:
