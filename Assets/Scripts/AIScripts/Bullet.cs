@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Dice.Player;
 
 public class Bullet : MonoBehaviour
 {
@@ -63,11 +64,6 @@ public class Bullet : MonoBehaviour
 
     }
 
-    public void Fire()
-    {
-      //  rb.AddForce(dir, ForceMode.Impulse);
-    }
-
 
 
 
@@ -81,7 +77,7 @@ public class Bullet : MonoBehaviour
         }
         else
         {
-            Damage(target);
+            Damage();
         }
 
 
@@ -95,21 +91,22 @@ public class Bullet : MonoBehaviour
         Collider[] col = Physics.OverlapSphere(transform.position, explosionRadius);
         foreach (Collider collider in col)
         {
-            if (collider.tag == "Enemy")
+            if (collider.tag == "Player")
             {
-                Damage(collider.transform);
+                Damage();
             }
         }
     }
 
-    void Damage(Transform player)
+    void Damage()
     {
-        TestMove p = player.GetComponent<TestMove>();
+        PlayerCharacterController.instance.TakeDamage(damage);
+       /* TestMove p = player.GetComponent<TestMove>();
 
         if (p != null)
         {
             p.TakeDamage(damage);
-        }
+        }*/
 
     }
 
