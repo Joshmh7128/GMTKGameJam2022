@@ -243,6 +243,46 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 7638d1fb-1f48-45df-851d-5e28f464b18f
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1589114170719165646}
+        m_TargetAssemblyTypeName: Dice.Player.PlayerCharacterController, Assembly-CSharp
+        m_MethodName: OnJump
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: b81a8014-f673-4083-8b49-eb0c7ec52df6
+    m_ActionName: Player/Jump[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 19c9992f-c952-4dfb-8202-54013c976838
+    m_ActionName: Player/1 Button[/Keyboard/1]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: af89ba34-d216-4978-a31d-e1771800d1f4
+    m_ActionName: Player/2 Button[/Keyboard/2]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: bf612dca-bb20-46fc-a65e-75a6cacbad32
+    m_ActionName: Player/3 Button[/Keyboard/3]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: bd138916-ad98-4356-8385-ed3fb23788b3
+    m_ActionName: Player/4 Button[/Keyboard/4]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 011c7fd1-2f55-4b24-9dfd-81939da35ac0
+    m_ActionName: Player/5 Button[/Keyboard/5]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e3dae65a-40fe-40ac-bfb4-1c053698c993
+    m_ActionName: Player/6 Button[/Keyboard/6]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
