@@ -11,6 +11,7 @@ public class DiceClass : MonoBehaviour
 
     public FaceClass activeFace; // our active face
     public List<FaceClass> dieFaces = new List<FaceClass>(); // the list of all 6 of our faces
+    public List<Transform> faceDisplayTransforms = new List<Transform>(); // all the positions of our die faces
 
     [SerializeField] Vector3[] faceDirection = new Vector3[6] // directional rotations of each face of the die in euler angles
     {
@@ -63,6 +64,8 @@ public class DiceClass : MonoBehaviour
         activeFace = dieFaces[targetSide];
 		Dice.Player.PlayerCharacterController.instance.SwitchWeapon(activeFace.weapon); Debug.Log("setting player weapon to " + activeFace.weapon);
 		rolling = false;
+
+        UpdateInventory();
     }
 
     public void ProcessRoll()
@@ -86,13 +89,19 @@ public class DiceClass : MonoBehaviour
         // get our faces on start, after the Awake() from our inventory
         dieFaces = InventoryManager.instance.faces;
         RollTheDie();
-	}
+    }
 
     // whenever we update the weapons we have, update our inventory
     public void UpdateInventory()
     {
         inventoryDisplayText.text = InventoryStringDisplay();
         InventoryManager.instance.faces = dieFaces;
+
+        // update the faces okay ?
+        foreach (FaceClass face in dieFaces)
+        {
+            face.UpdateDisplay(dieFaces.IndexOf(face));
+        }
     }
 
 	public void RollTheDie()

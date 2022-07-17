@@ -6,11 +6,12 @@ public class FaceClass : MonoBehaviour
 {
 	public GameObject weapon;
     GameObject displayWeapon;
-    //public WeaponClass weaponClass;
+    public int diePosition; // 1 through 6
 
     // on enable spawn our weapon to the face spot
-    private void UpdateDisplay()
+    public void UpdateDisplay(int position)
     {
-        displayWeapon = Instantiate(weapon.GetComponent<WeaponClass>().weaponModel, transform);
+        Destroy(displayWeapon);
+        displayWeapon = Instantiate(weapon.GetComponent<WeaponClass>().weaponModel, DiceClass.instance.faceDisplayTransforms[position]);
     }
 }
